@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="Book">
+<head>
+  <meta charset="utf-8">
+  <title>Ramais corporativo | admin</title>
+  <link rel="stylesheet" href="./css/semantic.min.css">
+  <link rel="stylesheet" href="./css/icon.min.css">
+  <link rel="stylesheet" href="./css/master.css">
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+  <script src="./lib/angular.min.js" charset="utf-8"></script>
+  <script src="./lib/angular-jwt.min.js" charset="utf-8"></script>
+  <script src="./js/app.js" charset="utf-8"></script>
+  <script src="lib/dirPagination.js" charset="utf-8"></script>
+  <script src="./js/controllers/indexCtrl.js" charset="utf-8"></script>
+  <script src="./js/values/config.js" charset="utf-8"></script>
+</head>
+<body ng-controller="indexCtrl">
+  <div class="ui container top">
+    <div class="ui grid">
+      <div class="five wide column">
+        <img src="./images/_logo.png" width="80" height="80" />
+      </div>
+      <div class="three wide column"></div>
+      <div class="eight wide column">
+        <div class="ui form">
+          <div class="field">
+            <img src="./images/icon_tel.png" class="icon-tel">
+            <label id="title">Consultar ramais</label>
+            <div class="login">
+              <a href="/login">
+                <i class="icon user"></i>
+                Login
+              </a>
+            </div>
+            <div class="ui small icon input">
+              <input type="text" name="buscar" ng-model="filter" placeholder="Entre com sua busca">
+              <i class="icon"><img src="./images/search-icon.svg" class="icon-search"/></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <br/>
+    <table class="ui table compact striped">
+      <thead>
+        <tr>
+          <th>Colaborador</th>
+          <th>Departamento</th>
+          <th>Ramal</th>
+          <th>Base</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr dir-paginate="item in contatos | filter:filter | itemsPerPage:7">
+          <td>{{item.name}}</td>
+          <td>{{item.sector}}</td>
+          <td>{{item.ramal}}</td>
+          <td><img src="./images/{{item.base +'.png'}}" title="{{item.base}}" alt="{{item.base}}" class="base-icon"/></td>
+        </tr>
+        <tr>
+          <td colspan="6" class="paginate">
+            <dir-pagination-controls max-size="10" direction-links="true"></dir-pagination-controls>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="info">{{info}}</p>
+  </div>
+</body>
+</html>

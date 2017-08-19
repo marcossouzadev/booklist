@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="Book">
+<head>
+  <meta charset="utf-8">
+  <title>Ramais corporativos| admin</title>
+  <link rel="stylesheet" href="../css/semantic.min.css">
+  <link rel="stylesheet" href="../css/icon.min.css">
+  <link rel="stylesheet" href="../css/master.css">
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <script src="../lib/angular.min.js" charset="utf-8"></script>
+  <script src="../js/app.js" charset="utf-8"></script>
+  <script src="../lib/angular-jwt.min.js" charset="utf-8"></script>
+  <script src="../js/values/config.js" charset="utf-8"></script>
+  <script src="../js/config.js" charset="utf-8"></script>
+  <script src="../lib/dirPagination.js" charset="utf-8"></script>
+  <script src="../js/controllers/adminCtrl.js" charset="utf-8"></script>
+  <script src="../js/services/contatosAPI.js" charset="utf-8"></script>
+  <script src="../js/interceptores/authInterceptor.js" charset="utf-8"></script>
+
+</head>
+<body ng-controller="adminCtrl">
+  <div class="ui container">
+    <br>
+    <div class="ui secondary menu">
+      <div class="header item"><img src="../images/_logo.png" title="Ramais corporativo" alt="Ramais corporativo" /></div>
+      <a href="/admin" class="active item">
+        Ramais
+      </a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui icon input">
+            <input type="text" ng-model="filter" placeholder="Procurar...">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ui image primary label">
+            <i class="icon user"></i>
+            {{usuario_atual}}
+            <a class="links" href="/admin/passwd"><i class="icon unlock"></i></a>
+            <a class="links" href="/login"><i class="icon power"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <br>
+    <div class="ui grid">
+      <div class="four wide column"></div>
+      <div class="eight wide column">
+        <table class="ui table">
+          <thead>
+            <th><h4 class="ui dividing header"><i class="icon phone"></i>Editar contato {{editarContato.name}}</h4></th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <form class="ui form" name="formEditarContato">
+                  <div class="field">
+                    <label for="name">Colaborador</label>
+                    <input type="text" name="name" ng-model="editarContato.name" placeholder="Entre com nome do contato" ng-required="true">
+                  </div>
+                  <div class="field">
+                    <label for="sector">Departamento</label>
+                    <input type="text" name="sector" ng-model="editarContato.sector" placeholder="Entre com setor do contato" ng-required="true">
+                  </div>
+                  <div class="field">
+                    <label for="ramal">Ramal</label>
+                    <input type="number" name="ramal" ng-model="editarContato.ramal" placeholder="Entre com ramal do contato" ng-required="true">
+                  </div>
+                  <div class="field">
+                    <select class="select" ng-model="editarContato.base" name="base" ng-required="true">
+                      <<option value="">Selecione establecimento</option>
+                      <option value="_matriz">Matriz</option>
+                      <option value="_filial">Filial</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <div class="ui toggle checkbox">
+                      <input type="checkbox" name="role" ng-model="editarContato.role">
+                      <label>Usuário administrador</label>
+                    </div>
+                  </div>
+                  <div class="field" ng-if="editarContato.role">
+                    <label for="login">Login</label>
+                    <input type="text" name="login" ng-model="editarContato.login" placeholder="Entre com um login" ng-required="true">
+                  </div>
+                  <div class="field">
+                    <label>&nbsp;</label>
+                    <button class="ui button primary fluid" ng-click="atualizarContato(editarContato, editarContato.id)" ng-disabled="formEditarContato.$invalid">Salvar</button>
+                  </div>
+                  <div class="field">
+                    <button class="ui button teal fluid" ng-click="goHome()">Cancelar</button>
+                  </div>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="four wide column"></div>
+    </div>
+    <p class="info">{{info}}</p>
+  </div>
+</body>
+</html>

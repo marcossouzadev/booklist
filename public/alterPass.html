@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="Book">
+<head>
+  <meta charset="utf-8">
+  <title>Ramais corporativos| admin</title>
+  <link rel="stylesheet" href="../css/semantic.min.css">
+  <link rel="stylesheet" href="../css/icon.min.css">
+  <link rel="stylesheet" href="../css/master.css">
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <script src="../lib/angular.min.js" charset="utf-8"></script>
+  <script src="../lib/angular-jwt.min.js" charset="utf-8"></script>
+  <script src="../js/app.js" charset="utf-8"></script>
+  <script src="../js/config.js" charset="utf-8"></script>
+  <script src="../lib/dirPagination.js" charset="utf-8"></script>
+  <script src="../js/controllers/adminCtrl.js" charset="utf-8"></script>
+  <script src="../js/interceptores/authInterceptor.js" charset="utf-8"></script>
+  <script src="../js/services/contatosAPI.js" charset="utf-8"></script>
+  <script src="../js/values/config.js" charset="utf-8"></script>
+</head>
+<body ng-controller="adminCtrl">
+  <div class="ui grid center aligned">
+    <div class="four wide column">&nbsp;</div>
+    <div class="four wide column">
+      <div class="ui middle aligned center aligned grid">
+        <div class="column box-login">
+          <h2 class="ui teal image header">
+            <div class="content size-12">
+              <img src="../images/_logo.png" class="hm-logo">
+              Alterar senha
+            </div>
+          </h2>
+          <form name="formAlterPass" class="ui large form">
+            <div class="ui stacked segment">
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input type="password" name="oldPass" ng-model="oldPass" placeholder="Digite a senha atual" ng-requered="true">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input type="password" name="newPass" ng-model="newPass" placeholder="Digite a nova senha" ng-requered="true">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input type="password" name="reNewPass" ng-model="reNewPass" placeholder="Confirme a nova senha" ng-required="true">
+                </div>
+              </div>
+              <div class="field">
+                <button class="ui fluid large primary submit button" ng-click="alterarSenha(oldPass,newPass,reNewPass)" ng-disabled="formAlterPass.$invalid">
+                  Alterar
+                </button>
+              </div>
+              <div class="field">
+                <a href="/admin" class="ui fluid large teal submit button">
+                  Cancelar
+                </a>
+              </div>
+            </div>
+          </form>
+          <p class="info">{{info}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="four wide column">&nbsp;</div>
+  </div>
+</body>
+</html>

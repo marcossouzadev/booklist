@@ -1,0 +1,31 @@
+{
+  "name": "hm",
+  "version": "1.0.0",
+  "description": "Lista de ramais corporativo",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js"
+  },
+  "keywords": [
+    "Agenda",
+    "lista",
+    "telefonica",
+    "corporativa"
+  ],
+  "author": "Marcos Souza",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jwt-simple": "^0.5.1",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "sequelize": "^3.27.0",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0"
+  }
+}

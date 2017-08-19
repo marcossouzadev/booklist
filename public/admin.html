@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="Book">
+<head>
+  <meta charset="utf-8">
+  <title>Ramais corporativos | admin</title>
+  <link rel="stylesheet" href="./css/semantic.min.css">
+  <link rel="stylesheet" href="./css/icon.min.css">
+  <link rel="stylesheet" href="./css/master.css">
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+  <script src="./lib/angular.min.js" charset="utf-8"></script>
+  <script src="./js/app.js" charset="utf-8"></script>
+  <script src="../lib/angular-jwt.min.js" charset="utf-8"></script>
+  <script src="./js/config.js" charset="utf-8"></script>
+  <script src="lib/dirPagination.js" charset="utf-8"></script>
+  <script src="./js/controllers/adminCtrl.js" charset="utf-8"></script>
+  <script src="./js/interceptores/authInterceptor.js" charset="utf-8"></script>
+  <script src="./js/services/contatosAPI.js" charset="utf-8"></script>
+  <script src="./js/values/config.js" charset="utf-8"></script>
+</head>
+<body ng-controller="adminCtrl">
+  <div class="ui container">
+    <br>
+    <div class="ui secondary menu">
+      <div class="header item"><img src="./images/_logo.png" title="Ramais corporativos" alt="Ramais corporativos" /></div>
+      <a href="/admin" class="active item">
+        Ramais
+      </a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui icon input">
+            <input type="text" ng-model="filter" placeholder="Procurar...">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ui image primary label">
+            <i class="icon user"></i>
+            {{usuario_atual}}
+            <a class="links" href="/admin/passwd"><i class="icon unlock"></i></a>
+            <a class="links" href="#" ng-click="logout()"><i class="icon power"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <br>
+    <div class="ui grid">
+      <div class="seven column row">
+        <div class="left floated column"></div>
+        <div class="right floated column">
+          <a href="admin/add" class="ui button"><i class="add user icon"></i>Adicionar</a>
+        </div>
+      </div>
+    </div>
+    <table class="ui table compact striped">
+      <thead>
+        <tr>
+          <th>Colaborador</th>
+          <th>Departamento</th>
+          <th>Ramal</th>
+          <th>Base</th>
+          <th>Regra</th>
+          <th class="right aligned">Acões</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr dir-paginate="item in contatos | filter:filter | itemsPerPage:6">
+          <td>{{item.name}}</td>
+          <td>{{item.sector}}</td>
+          <td>{{item.ramal}}</td>
+          <td><img src="./images/{{item.base +'.png'}}" title="{{item.base}}" alt="{{item.base}}" class="base-icon"/></td>
+          <td>{{(item.role)?"Admin":"Normal"}}</td>
+          <td class="right aligned">
+            <a href="#" class="ui button" ng-click ="editar(item.id)"><i class="write icon"></i>Editar</a>
+            <a href="#" ng-click="removeContato(item.id, item.name)" class="ui button"><i class="remove user icon"></i> Remover</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" class="paginate">
+            <dir-pagination-controls max-size="10" direction-links="true"></dir-pagination-controls>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="info">{{info}}</p>
+  </div>
+</body>
+</html>
