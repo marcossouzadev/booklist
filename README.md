@@ -1,6 +1,6 @@
 # BookList
 
-##### BookList é um agenda para armazenamento de dados como nome de colaborador, departamento, ramal dentro de uma organização, para torna essas informações mais acessivéis através do navegador. 
+##### BookList é um agenda para armazenamento de dados como nome de colaborador, departamento, ramal dentro de uma organização, para torna essas informações mais acessivéis através do navegador.
 
 # Dependencias de Sistema operacional
 **É necessário ter instalado na maquina** _nodejs_ , _npm_ , _sqlite3_ e _babel_ !
@@ -8,7 +8,8 @@
 # Como instalar
 
 **Primeiro clone repositório**
-_git clone git@github.com:marcossouzadev/booklist.git_
+_git clone git@github.com:marcossouzadev/booklist.git_ ou
+_git clone https://github.com/marcossouzadev/booklist.git_
 
 **Entre na pasta criada, booklist e instale as dependência do projeto**
 _npm install_
