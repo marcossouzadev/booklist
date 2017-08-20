@@ -1,6 +1,6 @@
 'use strict'
 export default {
-  database:'booList',
+  database:'bookList',
   username:'',
   password:'',
   params:{

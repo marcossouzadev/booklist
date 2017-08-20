@@ -1,5 +1,5 @@
 {
-  "name": "hm",
+  "name": "booklist",
   "version": "1.0.0",
   "description": "Lista de ramais corporativo",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "corporativa"
   ],
   "author": "Marcos Souza",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "babel-cli": "^6.18.0",
     "body-parser": "^1.15.2",

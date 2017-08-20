@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name"        : "hm",
+    "name"        : "booklist",
     "script"      : "./index.js",
     "watch"       : false,
     "exec_interpreter" : "babel-node",
